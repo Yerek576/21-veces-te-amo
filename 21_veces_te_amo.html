@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 veces Te Amo ❤️</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0; min-height:100vh; overflow:hidden;
+    display:flex; align-items:center; justify-content:center;
+    font-family:Georgia, "Times New Roman", serif;
+    background:radial-gradient(circle at center,#24102d 0%,#090613 65%,#030208 100%);
+    color:white;
+  }
+  .stars,.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+  .star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.7;animation:twinkle 2s infinite alternate}
+  @keyframes twinkle{to{opacity:.15;transform:scale(.5)}}
+  .heart{
+    position:absolute; bottom:-40px; font-size:18px;
+    animation:floatUp linear forwards; opacity:.85;
+  }
+  @keyframes floatUp{
+    from{transform:translateY(0) scale(.7) rotate(0deg);opacity:0}
+    15%{opacity:.9}
+    to{transform:translateY(-115vh) scale(1.25) rotate(20deg);opacity:0}
+  }
+  .card{
+    position:relative; z-index:2; width:min(92vw,650px);
+    min-height:470px; padding:42px 28px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    background:rgba(15,8,24,.72); border:1px solid rgba(255,120,180,.25);
+    border-radius:28px; box-shadow:0 0 70px rgba(255,40,130,.12), inset 0 0 35px rgba(255,255,255,.025);
+    backdrop-filter:blur(8px);
+  }
+  .small{font-size:15px;letter-spacing:3px;text-transform:uppercase;opacity:.7}
+  h1{font-size:clamp(38px,9vw,72px);margin:12px 0 5px;letter-spacing:2px}
+  .birthday{font-size:clamp(18px,4vw,27px);opacity:.9;margin-bottom:24px}
+  .number{
+    font-size:15px; letter-spacing:4px; opacity:.6; min-height:22px;
+  }
+  .message{
+    min-height:125px; display:flex; align-items:center; justify-content:center;
+    font-size:clamp(28px,7vw,52px); font-weight:bold;
+    text-shadow:0 0 25px rgba(255,80,160,.35);
+    animation:appear .7s ease;
+  }
+  @keyframes appear{from{opacity:0;transform:scale(.86)}to{opacity:1;transform:scale(1)}}
+  button{
+    border:0; padding:14px 30px; border-radius:999px; cursor:pointer;
+    font-size:17px; font-weight:bold; color:#fff;
+    background:linear-gradient(135deg,#ff3d88,#a62dff);
+    box-shadow:0 8px 30px rgba(255,50,140,.25);
+    transition:.2s transform,.2s box-shadow;
+  }
+  button:hover{transform:translateY(-2px);box-shadow:0 12px 35px rgba(255,50,140,.4)}
+  .final{display:none}
+  .final h2{font-size:clamp(34px,8vw,58px);margin:8px 0 15px}
+  .final p{font-size:20px;line-height:1.6;max-width:520px;opacity:.9}
+  .big-heart{font-size:90px;animation:beat 1s infinite alternate}
+  @keyframes beat{to{transform:scale(1.12)}}
+  .signature{margin-top:15px;font-style:italic;opacity:.7}
+</style>
+</head>
+<body>
+<div class="stars" id="stars"></div>
+<div class="hearts" id="hearts"></div>
+
+<main class="card">
+  <section id="intro">
+    <div class="small">Para el amor de mi vida</div>
+    <h1>Feliz cumpleaños ❤️</h1>
+    <div class="birthday">Hoy cumples 21 años...</div>
+    <p style="opacity:.7;max-width:480px;line-height:1.6">
+      Y pensé que 21 años merecían algo especial.
+      Así que quiero decirte algo... <b>21 veces.</b>
+    </p>
+    <button id="start">Empezar la sorpresa 💌</button><div id="musicHint" style="margin-top:14px;font-size:13px;opacity:.55">🎵 La sorpresa tiene música de fondo</div>
+  </section>
+
+  <section id="counter" style="display:none;width:100%">
+    <div class="small">Hay algo que quiero que recuerdes</div>
+    <div class="number" id="number">1 / 21</div>
+    <div class="message" id="message">Te amo ❤️</div>
+    <button id="next">Otra vez 💗</button>
+  </section>
+
+  <section id="final" class="final">
+    <div class="big-heart">❤️</div>
+    <h2>21 veces no fueron suficientes.</h2>
+    <p>
+      Porque podría decirte <b>Te amo</b> 21 veces, 21 mil veces
+      o todos los días de mi vida... y aun así sentiría que me faltan palabras.
+      <br><br>
+      <b>Feliz cumpleaños, mi amor. 🎂❤️</b>
+    </p>
+    <div class="signature">Con mucho amor,<br><b>Tu hermoso hombre Adonis ❤️</b></div>
+  </section>
+</main>
+
+<script>
+const messages = [
+  "Te amo ❤️",
+  "Te amo muchísimo 💗",
+  "Discúlpame si te hice enojar hoy, pero te amo ❤️",
+  "Soy tonto a veces, pero te amo 🥺❤️",
+  "Te amo tanto que hasta soy pelion xd 😂❤️",
+  "Que sería yo sin ti mamona cascarrabias, Te amo 😂💕",
+  "Te amo por tu forma de ser 🌷",
+  "Te amo por tu sonrisa 😊",
+  "Te amo por hacerme feliz ✨",
+  "Te amo por cada momento contigo 🥰",
+  "Te amo incluso en la distancia 🌙",
+  "Te amo por cómo haces especial lo sencillo 💞",
+  "Te amo por ser tú 💖",
+  "Te amo hoy y todos los días ❤️",
+  "Te amo en mis días buenos y malos 🫶",
+  "Te amo por cada recuerdo que tenemos 📸",
+  "Te amo por todo lo que aún nos falta vivir 🌹",
+  "Te amo con todo mi corazón 💓",
+  "Te amo más cada día 💘",
+  "Te amo sin medida ♾️",
+  "TE AMO. Y FELICES 21 AÑOS, MI AMOR. 🎂❤️"
+];
+
+
+let i = 0;
+let audioCtx = null;
+let master = null;
+let musicTimer = null;
+let musicStep = 0;
+
+function startRomanticMusic(){
+  if(audioCtx) {
+    if(audioCtx.state === "suspended") audioCtx.resume();
+    return;
+  }
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  master = audioCtx.createGain();
+  master.gain.value = 0.96;
+  master.connect(audioCtx.destination);
+
+  // Melodía romántica instrumental generada en el navegador.
+  const melody = [
+    261.63, 329.63, 392.00, 523.25,
+    493.88, 392.00, 329.63, 392.00,
+    293.66, 349.23, 440.00, 587.33,
+    523.25, 440.00, 349.23, 329.63
+  ];
+
+  const chords = [
+    [261.63,329.63,392.00],
+    [293.66,349.23,440.00],
+    [261.63,329.63,392.00],
+    [220.00,261.63,329.63]
+  ];
+
+  musicStep = 0;
+
+  function playNote(freq, duration, volume, type="sine"){
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.linearRampToValueAtTime(volume, now + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    osc.connect(gain);
+    gain.connect(master);
+    osc.start(now);
+    osc.stop(now + duration + 0.03);
+  }
+
+  function playChord(){
+    const chord = chords[Math.floor(musicStep / 4) % chords.length];
+    chord.forEach((freq, index) => {
+      setTimeout(() => playNote(freq, 1.7, 0.33, "sine"), index * 25);
+    });
+  }
+
+  playChord();
+  musicTimer = setInterval(() => {
+    playNote(melody[musicStep % melody.length], 0.85, 0.84, "triangle");
+    if(musicStep % 4 === 0) playChord();
+    musicStep++;
+  }, 850);
+}
+
+function clickSound(){
+  if(!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(659.25, now);
+  osc.frequency.exponentialRampToValueAtTime(987.77, now + 0.12);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.12, now + 0.015);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.20);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.22);
+}
+
+const intro = document.getElementById("intro");
+const counter = document.getElementById("counter");
+const final = document.getElementById("final");
+const message = document.getElementById("message");
+const number = document.getElementById("number");
+const next = document.getElementById("next");
+
+document.getElementById("start").onclick = () => {
+  startRomanticMusic();
+  if (audioCtx && audioCtx.state === "suspended") audioCtx.resume();
+  clickSound();
+  intro.style.display = "none";
+  counter.style.display = "block";
+  showMessage();
+};
+
+function showMessage(){
+  message.style.animation = "none";
+  void message.offsetWidth;
+  message.style.animation = "appear .7s ease";
+  message.textContent = messages[i];
+  number.textContent = `${i+1} / 21`;
+  next.textContent = i === 20 ? "Terminar la sorpresa ❤️" : "Otra vez 💗";
+  burst();
+}
+
+next.onclick = () => {
+  clickSound();
+  if(i < 20){
+    i++;
+    showMessage();
+  } else {
+    counter.style.display = "none";
+    final.style.display = "block";
+    for(let n=0;n<25;n++) setTimeout(createHeart,n*90);
+  }
+};
+
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.textContent=["❤️","💗","💕","💖","💘"][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(14+Math.random()*25)+"px";
+  h.style.animationDuration=(5+Math.random()*5)+"s";
+  document.getElementById("hearts").appendChild(h);
+  setTimeout(()=>h.remove(),10000);
+}
+function burst(){
+  for(let n=0;n<5;n++) setTimeout(createHeart,n*100);
+}
+setInterval(createHeart,650);
+
+for(let i=0;i<90;i++){
+  const s=document.createElement("span");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  s.style.animationDelay=Math.random()*2+"s";
+  document.getElementById("stars").appendChild(s);
+}
+</script>
+</body>
+</html>
